@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resource :users, only: [:create]
+  post "/login", to: "users#login"
+  get "/auto_login", to: "users#auto_login"
+  mount ActionCable.server => '/cable'
 end
